@@ -18,6 +18,24 @@ window.aaaaabbbbbccccc = (key: string): string => {
     return key + '_aaaaabbbbbccccc';
 }
 
+export interface JqEventListenerObject {
+    data: any | undefined;
+    guid: number;
+    handler: Function;
+    namespace: string;
+    needsContext: any | undefined;
+    origType: string;
+    selector: any | undefined;
+    type: string,
+}
+
+export type JqEventListenersDataType = Record<string, JqEventListenerObject[]>;
+
+export function getEventListenersFromJqNode(node: ReturnType<typeof $>): JqEventListenersDataType {
+    // @ts-ignore
+    return $._data(node[0], "events");
+}
+
 const logger = window.modUtils.getLogger();
 
 export function ModWebpackExampleTs_patchLinkButton(MacroRef: typeof Macro) {
@@ -43,16 +61,40 @@ export function ModWebpackExampleTs_patchLinkButton(MacroRef: typeof Macro) {
         tags: null,
 
         handler() {
-            // console.log('patchLinkButton handler', [this, this.name, this.args, this.args[0], this.output]);
             const thisPtr = this;
+
             const r = h.apply(this as any, arguments);
+
             const outputRef = $(this.output);
+
             const children = outputRef.children();
-            // console.log('patchLinkButton handler outputRef', [outputRef, outputRef.length, outputRef.children(), outputRef.children()[outputRef.length - 1]]);
-            children.last()[0].addEventListener('click', () => {
-                console.log('patchLinkButton output click', [thisPtr, thisPtr.name, thisPtr.args, thisPtr.args[0], this.output]);
-            });
-            // console.log('patchLinkButton handler output', [this, this.name, this.args, this.args[0], this.output]);
+            const node = children.last();
+
+            const events = getEventListenersFromJqNode(node);
+
+            const hookKeyList = ['keypress', 'click'];
+
+            for (const key of hookKeyList) {
+                const eventList = events[key];
+                if (eventList) {
+                    for (const event of eventList) {
+                        const handler = event.handler;
+                        event.handler = function () {
+                            console.log('patchLinkButton output jq events', [key, thisPtr, thisPtr.name, thisPtr.args, thisPtr.args[0], thisPtr.output]);
+                            handler.apply(this, arguments);
+                        }
+                    }
+                }
+            }
+
+            // const clickH = events['click']?.[0]?.handler;
+            // if (clickH) {
+            //     console.log('patchLinkButton handler events', [events, events['click'], clickH.toString()]);
+            //     events['click'][0].handler = function () {
+            //         console.log('patchLinkButton output jq events click', [thisPtr, thisPtr.name, thisPtr.args, thisPtr.args[0], thisPtr.output]);
+            //         // clickH.apply(this, arguments);
+            //     }
+            // }
             return r;
         },
     });
