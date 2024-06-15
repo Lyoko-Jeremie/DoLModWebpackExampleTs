@@ -23,3 +23,9 @@ the output file will in `dist` folder
 
 `node "..\dist-insertTools\packModZip.js" "boot.json"`
 
+
+---
+
+only the file in `src_inject` will be build by webpack
+
+the `src_load/earlyload.ts` and `src_load/preload.ts` still two normal ts file, will be build by tsc
