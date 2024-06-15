@@ -1,0 +1,53 @@
+{
+  "name": "ModWebpackExampleTs",
+  "version": "1.0.0",
+  "styleFileList": [
+  ],
+  "scriptFileList_earlyload": [
+    "dist/webpack_earlyload.js"
+  ],
+  "scriptFileList_inject_early": [
+    "dist/webpack_inject_early.js"
+  ],
+  "scriptFileList_preload": [
+    "dist/webpack_preload.js"
+  ],
+  "scriptFileList": [
+    "js/after_game.js"
+  ],
+  "tweeFileList": [
+  ],
+  "imgFileList": [
+  ],
+  "imgFileReplaceList": [
+  ],
+  "additionFile": [
+    "README.md"
+  ],
+  "addonPlugin": [
+    {
+      "modName": "ReplacePatcher",
+      "addonName": "ReplacePatcherAddon",
+      "modVersion": "1.0.0",
+      "params": {
+        "js": [
+        ],
+        "css": [
+        ],
+        "twee": [
+          {
+            "passageName": "Bedroom",
+            "from": "You are in your bedroom.",
+            "to": "You are in your bedroom.\n<<link [[aaaaabbbbbccccc('aaa')|Mirror]]>><</link>>"
+          }
+        ]
+      }
+    }
+  ],
+  "dependenceInfo": [
+    {
+      "modName": "ModLoader",
+      "version": "^2.17.1"
+    }
+  ]
+}
