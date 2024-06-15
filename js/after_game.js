@@ -1,2 +1,2 @@
 
-window.ModWebpackExampleTs_patchLinkButton(Macro);
+window.ModWebpackExampleTs_patchLinkButton(Macro, Scripting);

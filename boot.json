@@ -38,7 +38,17 @@
           {
             "passageName": "Bedroom",
             "from": "You are in your bedroom.",
-            "to": "You are in your bedroom.\n<<link [[aaaaabbbbbccccc('aaa')|Mirror]]>><</link>>"
+            "to": "You are in your bedroom.\n<<link [[aaaaabbbbbccccc('aaa')|Mirror]] \"asdasdasd\" [[true]]>><</link>>"
+          },
+          {
+            "passageName": "Bedroom",
+            "from": "You are in your bedroom.",
+            "to": "You are in your bedroom.\n<<link \"MirrorMirror\" \"asdasdasd\" [[true]]>><</link>>"
+          },
+          {
+            "passageName": "Bedroom",
+            "from": "You are in your bedroom.",
+            "to": "You are in your bedroom.\n<<link [[MirrorMirror2|Bedroom]] [[true]]>><</link>>"
           }
         ]
       }
