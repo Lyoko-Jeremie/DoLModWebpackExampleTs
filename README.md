@@ -14,6 +14,7 @@ change mod name in `boot.json` file
 
 ## build
 
+`yarn run build:ts`
 `yarn run build:webpack`
 
 the output file will in `dist` folder

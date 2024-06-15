@@ -1,7 +1,13 @@
+import lodash from 'lodash';
+import moment from 'moment';
+
 import {isFunction} from 'lodash';
 import type jquery from 'jquery';
 // import type {SC2DataManager} from "../../../dist-BeforeSC2/SC2DataManager";
 // import type {ModUtils} from "../../../dist-BeforeSC2/Utils";
+
+console.log('earlyload.js', lodash, moment);
+console.log('earlyload.js', lodash.VERSION, moment.version);
 
 /**
  *

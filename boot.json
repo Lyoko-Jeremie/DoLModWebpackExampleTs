@@ -4,13 +4,13 @@
   "styleFileList": [
   ],
   "scriptFileList_earlyload": [
-    "dist/webpack_earlyload.js"
+    "dist/earlyload.js"
   ],
   "scriptFileList_inject_early": [
     "dist/webpack_inject_early.js"
   ],
   "scriptFileList_preload": [
-    "dist/webpack_preload.js"
+    "dist/preload.js"
   ],
   "scriptFileList": [
     "js/after_game.js"

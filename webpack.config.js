@@ -19,9 +19,7 @@ const webpack = require('webpack');
 const config = {
   entry: {
     // Your entry file
-    webpack_earlyload: './src/earlyload.ts',
-    webpack_inject_early: './src/inject_early.ts',
-    webpack_preload: './src/preload.ts',
+    webpack_inject_early: './src_inject/inject_early.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -32,7 +30,7 @@ const config = {
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        configFile: 'src/tsconfig.json',
+        configFile: 'src_inject/tsconfig.json',
         memoryLimit: 4096,
       },
     }),
@@ -53,7 +51,7 @@ const config = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
     plugins: [new TsconfigPathsPlugin({
-      configFile: 'src/tsconfig.json',
+      configFile: 'src_inject/tsconfig.json',
     })],
     alias: {
     },
